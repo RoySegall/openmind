@@ -2,4 +2,23 @@ name = OpenMain Bootstrap
 description = OpenMind theme for Drupal. This is based on Bootstrap.
 core = 7.x
 base theme = bootstrap
+
+; CSS
 stylesheets[all][] = css/style.css
+stylesheets[all][] = css/color-fuchsia.css
+stylesheets[all][] = css/animate.min.css
+stylesheets[all][] = css/font-awesome.min.css
+stylesheets[all][] = css/lightbox.css
+stylesheets[all][] = css/font-awesome.min.css
+stylesheets[all][] = css/syntax/shCore.css
+stylesheets[all][] = css/syntax/shThemeDefault.css
+stylesheets[all][] = css/width-full.css
+
+; JS
+scripts[] = js/lightbox-2.6.min.js
+scripts[] = js/holder.js
+scripts[] = js/app.js
+scripts[] = js/syntax/shCore.js
+scripts[] = js/syntax/shBrushXml.js
+scripts[] = js/syntax/shBrushJScript.js"
+scripts[] = js/drupalhub_syntax.js
