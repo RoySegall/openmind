@@ -1,0 +1,5 @@
+name = OpenMain Bootstrap
+description = OpenMind theme for Drupal. This is based on Bootstrap.
+core = 7.x
+base theme = bootstrap
+stylesheets[all][] = css/style.css
