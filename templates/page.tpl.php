@@ -84,15 +84,11 @@
       </div>
     <?php endif; ?>
 
-    <div id="social-header" class="hidden-xs">
-      <a href="#" class="social-icon soc-twitter animated fadeInDown animation-delay-1"><i class="fa fa-twitter"></i></a>
-      <a href="#" class="social-icon soc-google-plus animated fadeInDown animation-delay-2"><i class="fa fa-google-plus"></i></a>
-      <a href="#" class="social-icon soc-facebook animated fadeInDown animation-delay-3"><i class="fa fa-facebook"></i></a>
-      <a href="#" class="social-icon soc-instagram animated fadeInDown animation-delay-4"><i class="fa fa-instagram"></i></a>
-      <a href="#" class="social-icon soc-pinterest animated fadeInDown animation-delay-5"><i class="fa fa-pinterest"></i></a>
-      <a href="#" class="social-icon soc-linkedin animated fadeInDown animation-delay-6"><i class="fa fa-linkedin"></i></a>
-      <a href="#" class="social-icon soc-github animated fadeInDown animation-delay-7"><i class="fa fa-github"></i></a>
-    </div>
+    <?php if (!empty($social_links)): ?>
+      <div id="social-header" class="hidden-xs">
+        <?php print $social_links; ?>
+      </div>
+    <?php endif; ?>
 
     <div id="search-header" class="hidden-xs animated bounceInRight">
       <div class="input-group">
@@ -109,7 +105,7 @@
 <nav class="navbar navbar-static-top navbar-mind" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="collapse navbar-collapse navbar-mind-collapse">
       <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
         <div class="navbar-collapse collapse">
           <nav role="navigation">

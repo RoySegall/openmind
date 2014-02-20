@@ -9,3 +9,13 @@
 .not-logged-in .logig-form #user-login .form-item-name,
 .not-logged-in .logig-form #user-login .form-item-pass {
   margin: 0px; }
+
+.page-user-register #block-system-main {
+  margin: 0px !important; }
+.page-user-register .panel.panel-default {
+  border: 0px;
+  margin-bottom: 0px; }
+.page-user-register #user-register-form .form-submit {
+  background-color: #007094;
+  border-color: #004759;
+  float: right; }

@@ -27,3 +27,24 @@
     }
   }
 }
+
+.page-user-register {
+
+  #block-system-main {
+    margin: 0px !important;
+  }
+
+  .panel.panel-default {
+    border: 0px;
+    margin-bottom: 0px;
+  }
+
+  #user-register-form {
+
+    .form-submit {
+      background-color: #007094;
+      border-color: #004759;
+      float: right; // LTR;
+    }
+  }
+}

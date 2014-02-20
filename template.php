@@ -43,7 +43,6 @@ function bootstrap_openmind_breadcrumb($variables) {
  */
 function bootstrap_openmind_form_user_login_alter(&$form, $form_state) {
   $form['#after_build'] = array('bootsrap_openmind_user_login');
-
 }
 
 /**
@@ -51,7 +50,6 @@ function bootstrap_openmind_form_user_login_alter(&$form, $form_state) {
  * login page.
  */
 function bootsrap_openmind_user_login($form, $form_state) {
-
   // The form wrapper.
   $form['#prefix'] = '<div class="center-block logig-form">';
   $form['#prefix'] .= '<div class="panel panel-default">';
@@ -89,7 +87,7 @@ function bootsrap_openmind_user_login($form, $form_state) {
   ));
 
   // Adding links for register and recover password.
-  $form['recover'] = array(
+  $form['create'] = array(
     '#type' => 'item',
     '#markup' => l(t('Create account'), 'user/register', array('attributes' => array('class' => array('btn','btn-success','pull-right')))),
     '#weight' => 200,
@@ -100,6 +98,52 @@ function bootsrap_openmind_user_login($form, $form_state) {
     '#markup' => l(t('Recover password'), 'user/password', array('attributes' => array('class' => array('btn','btn-warning')))),
     '#weight' => 201,
   );
+
+  return $form;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bootstrap_openmind_form_user_register_form_alter(&$form, $form_state) {
+  $form['#after_build'] = array('bootsrap_openmind_user_register');
+}
+
+/**
+ * After build handler; Adding HTML styling tags for the form elements.
+ */
+function bootsrap_openmind_user_register($form, $form_state) {
+  $login_form = drupal_get_form('user_login');
+
+  // Remove the register button, we already in the register form.
+  unset($login_form['create']);
+
+  // The form wrapper.
+  $form['#prefix'] = '<div class="col-md-7">';
+  $form['#prefix'] .= '<h2 class="section-title">'. t('Create Account') . '</h2>';
+  $form['#prefix'] .= '<div class="panel panel-primary animated fadeInDown">';
+  $form['#prefix'] .= '<div class="panel-heading">'. t('Register Form') . '</div>';
+  $form['#prefix'] .= '<div class="panel-body">';
+
+  $form['#suffix'] = '</div></div></div>';
+  $form['#suffix'] .= '<div class="col-lg-4 col-lg-offset-1 col-md-5">';
+  $form['#suffix'] .= '<h2 class="section-title">'. t('Are you registered?') .'</h2>';
+  $form['#suffix'] .= '<div class="panel panel-success animated fadeInDown animation-delay-2">';
+  $form['#suffix'] .= render($login_form);
+  $form['#suffix'] .= '</div></div>';
+
+  // Work on the email element.
+  $form['account']['mail']['#description'] = '';
+
+  // Align the password elements.
+  $form['account']['pass']['pass1']['#prefix'] = '<div class="row"><div class="col-md-6">';
+  $form['account']['pass']['pass1']['#suffix'] = '</div>';
+
+  $form['account']['pass']['pass2']['#prefix'] = '<div class="col-md-6">';
+  $form['account']['pass']['pass2']['#suffix'] = '</div></div>';
+
+  // Remove the JS validation process.
+  $form['account']['pass']['#attached']['js'] = array();
 
   return $form;
 }
