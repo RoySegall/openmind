@@ -13,6 +13,7 @@ stylesheets[all][] = css/font-awesome.min.css
 stylesheets[all][] = css/syntax/shCore.css
 stylesheets[all][] = css/syntax/shThemeDefault.css
 stylesheets[all][] = css/width-full.css
+stylesheets[all][] = css/drupalhub.css
 
 ; JS
 scripts[] = js/lightbox-2.6.min.js

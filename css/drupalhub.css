@@ -1,0 +1,11 @@
+.not-logged-in .nav-tabs {
+  display: none; }
+.not-logged-in .logig-form #block-system-main {
+  margin: 0px !important; }
+.not-logged-in .logig-form #user-login .login-input {
+  margin-bottom: 20px; }
+.not-logged-in .logig-form #user-login label {
+  display: none; }
+.not-logged-in .logig-form #user-login .form-item-name,
+.not-logged-in .logig-form #user-login .form-item-pass {
+  margin: 0px; }

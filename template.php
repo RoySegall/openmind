@@ -42,75 +42,93 @@ function bootstrap_openmind_breadcrumb($variables) {
  * Implements hook_form_FORM_ID_alter().
  */
 function bootstrap_openmind_form_user_login_alter(&$form, $form_state) {
-//  $form['#prefix'] = '<div class="center-block logig-form"><div class="panel panel-default">';
-//  $form['#prefix'] .= '<div class="panel-heading">' . t('Login Form') . '</div>';
-//  $form['#prefix'] .= '<div class="panel-body">';
-//  $form['#suffix'] = '</div></div></div>';
-
   $form['#after_build'] = array('bootsrap_openmind_user_login');
+
 }
 
 /**
  * After build handler; Return custom form with the open mind theme for the user
  * login page.
  */
-function bootsrap_openmind_user_login() {
-  return drupal_get_form('bootstrap_openmind_user_login');
-}
+function bootsrap_openmind_user_login($form, $form_state) {
 
-function bootstrap_openmind_user_login($form, $form_state) {
-  $form['#theme'] = 'bootstrap_openmind_user_login';
+  // The form wrapper.
+  $form['#prefix'] = '<div class="center-block logig-form">';
+  $form['#prefix'] .= '<div class="panel panel-default">';
+  $form['#prefix'] .= '<div class="panel-heading">Login Form</div>';
+  $form['#prefix'] .= '<div class="panel-body">';
+  $form['#suffix'] = '</div></div></div></div>';
 
-  $form['foo'] = array(
-    '#type' => 'textfield',
-    '#title' => 'sssfo',
+  // User element.
+  $form['name']['#prefix'] = '<div class="input-group login-input">';
+  $form['name']['#prefix'] .= '<span class="input-group-addon"><i class="fa fa-user"></i></span>';
+  $form['name']['#suffix'] = '</div>';
+  $form['name']['#title'] = '';
+  $form['name']['#attributes'] = array(
+    'class' => array('form-control'),
+    'placeholder' => array(t('Username')),
   );
+
+  // Password element.
+  $form['pass']['#prefix'] = '<div class="input-group login-input">';
+  $form['pass']['#prefix'] .= '<span class="input-group-addon"><i class="fa fa-lock"></i></span>';
+  $form['pass']['#suffix'] = '</div>';
+  $form['pass']['#title'] = '';
+  $form['pass']['#attributes'] = array(
+    'class' => array('form-control'),
+    'placeholder' => array(t('Password')),
+  );
+
+  // Submit element.
+  $form['actions']['submit']['#attributes'] = array('class' => array('btn','btn-primary','pull-right'));
+  $form['actions']['submit']['#suffix'] = implode('', array(
+    '<a href="#" class="social-icon soc-twitter animated fadeInDown animation-delay-2"><i class="fa fa-twitter"></i></a>',
+    '<a href="#" class="social-icon soc-google-plus animated fadeInDown animation-delay-3"><i class="fa fa-google-plus"></i></a>',
+    '<a href="#" class="social-icon soc-facebook animated fadeInDown animation-delay-4"><i class="fa fa-facebook"></i></a>',
+    '<hr>',
+  ));
+
+  // Adding links for register and recover password.
+  $form['recover'] = array(
+    '#type' => 'item',
+    '#markup' => l(t('Create account'), 'user/register', array('attributes' => array('class' => array('btn','btn-success','pull-right')))),
+    '#weight' => 200,
+  );
+
+  $form['password'] = array(
+    '#type' => 'item',
+    '#markup' => l(t('Recover password'), 'user/password', array('attributes' => array('class' => array('btn','btn-warning')))),
+    '#weight' => 201,
+  );
+
   return $form;
 }
 
 /**
- * Theme callback; Theme the user login form.
+ * Implements theme_menu_local_task().
  */
-function theme_bootstrap_openmind_user_login($variables) {
+function bootstrap_openmind_menu_local_task(&$variables)  {
+  $link = $variables['element']['#link'];
 
-  // todo: Make it work!
-  $form = $variables['form'];
+  // Skipped on path we don't want to grant access via tabs.
+  if (in_array($link['href'], array('user', 'user/register', 'user/password'))) {
+    return;
+  }
 
-  $foo = render($form['foo']);
+  $link_text = $link['title'];
 
-  $output = '
-  <div class="center-block logig-form">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Login Form</div>
-                    <div class="panel-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <div class="input-group login-input">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Username">
-                                </div>
-                                <br>
-                                <div class="input-group login-input">
-                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input type="password" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Remember me
-                                    </label>
-                                </div>
-                                <button type="submit" class="btn btn-primary pull-right">Login</button>
-                                <a href="#" class="social-icon soc-twitter animated fadeInDown animation-delay-2"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="social-icon soc-google-plus animated fadeInDown animation-delay-3"><i class="fa fa-google-plus"></i></a>
-                                <a href="#" class="social-icon soc-facebook animated fadeInDown animation-delay-4"><i class="fa fa-facebook"></i></a>
-                                <hr>
-                                <a href="#" class="btn btn-success pull-right">Create Account</a>
-                                <a href="#" class="btn btn-warning">Password Recovery</a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>';
-  return $output;
+  if (!empty($variables['element']['#active'])) {
+    // Add text to indicate active tab for non-visual users.
+    $active = '<span class="element-invisible">' . t('(active tab)') . '</span>';
+
+    // If the link does not contain HTML already, check_plain() it now.
+    // After we set 'html'=TRUE the link will not be sanitized by l().
+    if (empty($link['localized_options']['html'])) {
+      $link['title'] = check_plain($link['title']);
+    }
+    $link['localized_options']['html'] = TRUE;
+    $link_text = t('!local-task-title!active', array('!local-task-title' => $link['title'], '!active' => $active));
+  }
+
+  return '<li' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l($link_text, $link['href'], $link['localized_options']) . "</li>\n";
 }

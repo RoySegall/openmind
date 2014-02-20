@@ -1,0 +1,29 @@
+.not-logged-in {
+
+  .nav-tabs {
+    display: none;
+  }
+
+  .logig-form {
+
+    #block-system-main {
+      margin: 0px !important;
+    }
+
+    #user-login {
+
+      .login-input {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: none;
+      }
+
+      .form-item-name,
+      .form-item-pass {
+        margin: 0px;
+      }
+    }
+  }
+}
