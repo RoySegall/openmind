@@ -5,18 +5,6 @@
  */
 
 /**
- * Implements hook_theme().
- */
-function bootstrap_openmind_theme() {
-  return array(
-    'bootstrap_openmind_user_login' => array(
-      'render element' => 'form',
-      'function' => 'theme_bootstrap_openmind_user_login',
-    ),
-  );
-}
-
-/**
  * Implements theme_breadcrumb().
  */
 function bootstrap_openmind_breadcrumb($variables) {
