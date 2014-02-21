@@ -65,9 +65,7 @@ function bootstrap_openmind_theme() {
     ),
 
     'openmind_content_box' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+      'function' => 'theme_openmind_content_box',
     ),
 
     'openmind_caption' => array(
@@ -202,7 +200,7 @@ function theme_openmind_alerts($variables) {
 }
 
 /**
- * Generating progress bar.
+ * OpenMind progress bar.
  */
 function theme_openmind_progress_bar($variables) {
   $variables['content'] = empty($variables['content']) ? t('@number% Complete', array('@number' => $variables['value'])) : $variables['content'];
@@ -234,7 +232,7 @@ function theme_openmind_progress_bar($variables) {
 }
 
 /**
- * Feature box.
+ * OpenMind feature box.
  */
 function theme_openmind_feature_box($variables) {
   return '
@@ -245,6 +243,21 @@ function theme_openmind_feature_box($variables) {
         <p>' . $variables['content'] . '</p>
         <a href="' . $variables['url'] . '" class="btn btn-success pull-right">' . $variables['text'] . '</a>
       </div>
+    </div>
+  ';
+}
+
+/**
+ * OpenMind content box.
+ */
+function theme_openmind_content_box($variables) {
+  $status = empty($variables['status']) ? 'primary' : $variables['status'];
+
+  return '
+    <div class="mind-box mind-box-' . $status . '">
+      <h4 class="mind-box-title clearfix">' . $variables['title'] . '</h4>
+      <i class="fa fa-' . $variables['icon'] . '"></i>
+      <p>' . $variables['content'] . '</p>
     </div>
   ';
 }

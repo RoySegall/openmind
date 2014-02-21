@@ -223,3 +223,18 @@ function example_feature_box() {
 
   theme('openmind_feature_box', $variables);
 }
+
+/**
+ * Content box.
+ */
+function example_content_box() {
+  // Status allowed values: success, info, warning, danger.
+  $variables = array(
+    'icon' => 'shopping-cart',
+    'title' => 'Title',
+    'content' => 'Text',
+    'status' => 'success',
+  );
+
+  theme('openmind_content_box', $variables);
+}
