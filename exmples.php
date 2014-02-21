@@ -172,3 +172,37 @@ function example_alerts() {
 
   theme('openmind_alerts', $variables);
 }
+
+/**
+ * Progress bar.
+ */
+function example_progress_bar() {
+  // Normal.
+  $variables = array(
+    'value' => 20,
+  );
+
+  // With size. Allowed sizes: large, small, very small
+  $variables = array(
+    'value' => 20,
+    'size' => 'small',
+  );
+
+  // Striped bar. Please notice that when the striped is on the size will be set
+  // to default.
+  $variables = array(
+    'value' => 90,
+    'size' => 'small',
+    'striped' => TRUE,
+  );
+
+  // With colors. Allowed values: success, info, warning, danger.
+  $variables = array(
+    'value' => 90,
+    'size' => 'small',
+    'striped' => TRUE,
+    'status' => 'success',
+  );
+
+  theme('openmind_progress_bar', $variables);
+}

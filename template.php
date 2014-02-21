@@ -17,6 +17,7 @@ function bootstrap_openmind_theme() {
       'template' => 'openmind-navs',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
+
     'openmind_panels' => array(
       'variables' => array(
         'state' => '',
@@ -25,6 +26,7 @@ function bootstrap_openmind_theme() {
       ),
       'function' => 'theme_openmind_panels',
     ),
+
     'openmind_collapse' => array(
       'variables' => array(
         'id' => '',
@@ -33,6 +35,7 @@ function bootstrap_openmind_theme() {
       'template' => 'openmind-collapse',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
+
     'openmind_lists' => array(
       'variables' => array(
         'style' => '',
@@ -40,6 +43,7 @@ function bootstrap_openmind_theme() {
       ),
       'function' => 'theme_openmind_lists',
     ),
+
     'openmind_wells' => array(
       'variables' => array(
         'content' => '',
@@ -47,36 +51,39 @@ function bootstrap_openmind_theme() {
       ),
       'function' => 'theme_openmind_wells',
     ),
+
     'openmind_alerts' => array(
       'function' => 'theme_openmind_alerts',
     ),
-    'openmind_progress_bar' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
-    ),
 
+    'openmind_progress_bar' => array(
+      'function' => 'theme_openmind_progress_bar',
+    ),
 
     'openmind_feature_box' => array(
       'variables' => array(),
       'template' => '',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
+
     'openmind_content_box' => array(
       'variables' => array(),
       'template' => '',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
+
     'openmind_caption' => array(
       'variables' => array(),
       'template' => '',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
+
     'openmind_lightbox' => array(
       'variables' => array(),
       'template' => '',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
+
     'openmind_slide_images' => array(
       'variables' => array(),
       'template' => '',
@@ -193,6 +200,38 @@ function theme_openmind_alerts($variables) {
     <div class="alert alert-' . $variables['type'] . '">
         <strong>' . $variables['title'] . '</strong> ' . $variables['content'] . '.
     </div>
+  ';
+}
+
+/**
+ * Generating progress bar.
+ */
+function theme_openmind_progress_bar($variables) {
+  $variables['content'] = empty($variables['content']) ? t('@number% Complete', array('@number' => $variables['value'])) : $variables['content'];
+  $variables['size'] = empty($variables['size']) ? 'default' : $variables['size'];
+  $variables['status'] = empty($variables['status']) ? '' : 'progress-bar-' . $variables['status'];
+
+  $sizes = array(
+    'default' => '',
+    'small' => 'progress-sm',
+    'very small' => 'progress-xs',
+    'large' => 'progress-lg',
+  );
+
+  if (!empty($variables['striped'])) {
+    $variables['size'] = 'default';
+    $striped = 'progress-striped active';
+  }
+  else {
+    $striped = '';
+  }
+
+  return '
+    <div class="progress ' . $sizes[$variables['size']] . ' ' . $striped . '">
+      <div class="progress-bar ' . $variables['status'] . '" role="progressbar" aria-valuenow="' . $variables['value'] . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $variables['value'] . '%;">
+          <span class="sr-only">' . $variables['content'] . '</span>
+      </div>
+  </div>
   ';
 }
 
