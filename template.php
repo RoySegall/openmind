@@ -41,9 +41,11 @@ function bootstrap_openmind_theme() {
       'function' => 'theme_openmind_lists',
     ),
     'openmind_wells' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+      'variables' => array(
+        'content' => '',
+        'size' => '',
+      ),
+      'function' => 'theme_openmind_wells',
     ),
     'openmind_alerts' => array(
       'variables' => array(),
@@ -55,6 +57,8 @@ function bootstrap_openmind_theme() {
       'template' => '',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
+
+
     'openmind_feature_box' => array(
       'variables' => array(),
       'template' => '',
@@ -164,6 +168,22 @@ function theme_openmind_lists($variable) {
   );
 
   return theme('item_list', $data);
+}
+
+/**
+ * OpenMind wells.
+ */
+function theme_openmind_wells($variables) {
+  $size = '';
+
+  if (!empty($variables['size'])) {
+    $size = $variables['size'] == 'large' ? 'well-lg' : 'well-sm';
+  }
+  return '
+    <div class="well ' . $size . '">
+       ' . $variables['content'] . '
+    </div>
+  ';
 }
 
 /**

@@ -133,3 +133,28 @@ function example_lists() {
 
   theme('openmind_lists', $variables);
 }
+
+/**
+ * Wells.
+ */
+function example_wells() {
+
+  // Regular size.
+  $variables = array(
+    'content' => 'foo',
+  );
+
+  // Large well.
+  $variables = array(
+    'content' => 'foo',
+    'size' => 'large',
+  );
+
+  // Small well.
+  $variables = array(
+    'content' => 'foo',
+    'size' => 'small',
+  );
+
+  theme('openmind_wells', $variables);
+}
