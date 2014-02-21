@@ -5,6 +5,74 @@
  */
 
 /**
+ * Implements hook_theme().
+ */
+function bootstrap_openmind_theme() {
+  return array(
+    'openmind_navs' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_panels' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_collapse' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_lists' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_wells' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_alerts' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_progress_bar' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_feature_box' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_content_box' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_caption' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_lightbox' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+    'openmind_slide_images' => array(
+      'variables' => array(),
+      'template' => '',
+      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+    ),
+  );
+}
+
+/**
  * Implements theme_breadcrumb().
  */
 function bootstrap_openmind_breadcrumb($variables) {
