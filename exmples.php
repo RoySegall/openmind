@@ -89,3 +89,30 @@ function example_panels() {
 
   theme('openmind_panels', $variables);
 }
+
+/**
+ * Collapse.
+ *
+ * Example on how to use the collapse component.
+ */
+function example_collapse() {
+  $variables = array(
+    'id' => 'collapse_example',
+    'elements' => array(
+      'first' => array(
+        'title' => 'First collapse',
+        'content' => 'This is the first collapse.',
+      ),
+      'second' => array(
+        'title' => 'Second collapse',
+        'content' => 'This is the second collapse.',
+      ),
+      'third' => array(
+        'title' => 'Third collapse',
+        'content' => 'This is the third collapse.',
+      ),
+    ),
+  );
+
+  theme('openmind_collapse', $variables);
+}

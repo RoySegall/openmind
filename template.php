@@ -26,8 +26,11 @@ function bootstrap_openmind_theme() {
       'function' => 'theme_openmind_panels',
     ),
     'openmind_collapse' => array(
-      'variables' => array(),
-      'template' => '',
+      'variables' => array(
+        'id' => '',
+        'elements' => array(),
+      ),
+      'template' => 'openmind-collapse',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
     'openmind_lists' => array(
@@ -82,10 +85,8 @@ function bootstrap_openmind_theme() {
  * Using the panels component.
  */
 function theme_openmind_panels($variables) {
- $state = $variables['state'];
-
+  $state = $variables['state'];
   $status = !empty($variables['status']) ? $variables['status'] : 'primary';
-
   $output = '<div class="panel panel-' . $status . '">';
 
   if ($state == 'basic') {
