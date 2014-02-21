@@ -34,9 +34,11 @@ function bootstrap_openmind_theme() {
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
     'openmind_lists' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+      'variables' => array(
+        'style' => '',
+        'items' => array(),
+      ),
+      'function' => 'theme_openmind_lists',
     ),
     'openmind_wells' => array(
       'variables' => array(),
@@ -127,6 +129,41 @@ function theme_openmind_panels($variables) {
   $output .= '</div>';
 
   return $output;
+}
+
+/**
+ * Constructing OpenMind lists.
+ */
+function theme_openmind_lists($variable) {
+  $items = array();
+
+  foreach ($variable['items'] as $item) {
+
+    if (is_array($item)) {
+      $markup = '';
+
+      if (!empty($item['badge'])) {
+        $markup .= '<span class="badge">' . $item['badge'] . '</span>';
+      }
+
+      $markup .= $item['data'];
+    }
+    else {
+      $markup = $item;
+    }
+
+    $items[] = array(
+      'data' => $markup,
+      'class' => array('list-group-item'),
+    );
+  }
+
+  $data = array(
+    'attributes' => array('class' => 'list-group'),
+    'items' => $items,
+  );
+
+  return theme('item_list', $data);
 }
 
 /**

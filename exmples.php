@@ -9,8 +9,6 @@
 
 /**
  * Navigation with tabs.
- *
- * The function will return the navigation component.
  */
 function examples_nav() {
 
@@ -32,8 +30,6 @@ function examples_nav() {
 
 /**
  * Panels.
- *
- * Example on how to use the panels component.
  */
 function example_panels() {
 
@@ -92,8 +88,6 @@ function example_panels() {
 
 /**
  * Collapse.
- *
- * Example on how to use the collapse component.
  */
 function example_collapse() {
   $variables = array(
@@ -115,4 +109,27 @@ function example_collapse() {
   );
 
   theme('openmind_collapse', $variables);
+}
+
+/**
+ * Item lists.
+ */
+function example_lists() {
+  // Simple item lists.
+  $variables = array(
+    'items' => array(
+      'foo',
+      'bar'
+    ),
+  );
+
+  // With badge.
+  $variables = array(
+    'items' => array(
+      array('data' => 'foo', 'badge' => 22),
+      array('data' => 'bar', 'badge' => 40),
+    ),
+  );
+
+  theme('openmind_lists', $variables);
 }
