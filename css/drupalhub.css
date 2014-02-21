@@ -19,3 +19,6 @@
   background-color: #007094;
   border-color: #004759;
   float: right; }
+
+.nav.nav-tabs {
+  margin-bottom: 0px; }

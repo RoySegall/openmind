@@ -10,8 +10,11 @@
 function bootstrap_openmind_theme() {
   return array(
     'openmind_navs' => array(
-      'variables' => array(),
-      'template' => '',
+      'variables' => array(
+        'tabs' => array(),
+        'content' => array(),
+      ),
+      'template' => 'openmind-navs',
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
     'openmind_panels' => array(
