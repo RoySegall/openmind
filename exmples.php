@@ -253,3 +253,16 @@ function example_icon_box() {
 
   theme('openmind_icon_box', $variables);
 }
+
+/**
+ * Icon box.
+ */
+function example_caption_box() {
+  $variables = array(
+    'image' => theme('image_style', array('uri' => URI, 'style_name' => STYLE_NAME)),
+    'content' => 'foo',
+    'title' => 'bar',
+  );
+
+  theme('openmind_caption', $variables);
+}

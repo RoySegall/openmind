@@ -73,9 +73,7 @@ function bootstrap_openmind_theme() {
     ),
 
     'openmind_caption' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+      'function' => 'theme_openmind_caption',
     ),
 
     'openmind_lightbox' => array(
@@ -283,6 +281,23 @@ function theme_openmind_icon_box($variables) {
         <p>' . $variables['content'] . '</p>
       </div>
     </div>
+  ';
+}
+
+/**
+ * OpenMedia caption box.
+ */
+function theme_openmind_caption($variables) {
+  return '
+    <div class="img-caption">
+      ' . $variables['image'] . '
+      <div class="caption">
+        <div class="caption-content">
+          <h4>' . $variables['title'] . '</h4>
+          <p>' . $variables['content'] . '</p>
+        </div>
+      </div>
+  </div>
   ';
 }
 
