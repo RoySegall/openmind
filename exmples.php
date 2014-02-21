@@ -81,6 +81,10 @@ function example_panels() {
     'footer' => t('Footer'),
   );
 
+  // You can also user status for different colors. Available colors:
+  // primary, success, info, warning, danger.
+  $variables['status'] = 'info';
+
   $output = theme('openmind_panels', $variables);
 
   theme('openmind_panels', $variables);

@@ -84,48 +84,46 @@ function bootstrap_openmind_theme() {
 function theme_openmind_panels($variables) {
  $state = $variables['state'];
 
+  $status = !empty($variables['status']) ? $variables['status'] : 'primary';
+
+  $output = '<div class="panel panel-' . $status . '">';
+
   if ($state == 'basic') {
-    $output = '
-      <div class="panel panel-primary">
+    $output .= '
         <div class="panel-body">
           ' . $variables['content'] . '
         </div>
-      </div>
     ';
   }
   else if ($state == 'with_heading') {
     $title = !empty($variables['title']) ? '<h3 class="panel-title">' . $variables['heading'] . '</h3>' : $variables['heading'];
-    $output = '
-      <div class="panel panel-primary">
+    $output .= '
       <div class="panel-heading">' . $title . '</div>
         <div class="panel-body">
           ' . $variables['content'] . '
         </div>
-      </div>
     ';
   }
   else if ($state == 'footer') {
-    $output = '
-      <div class="panel panel-primary">
+    $output .= '
         <div class="panel-body">
           ' . $variables['content'] . '
         </div>
         <div class="panel-footer">' . $variables['footer'] . '</div>
-      </div>
     ';
   }
   else if ($state == 'footer_and_header') {
     $title = !empty($variables['title']) ? '<h3 class="panel-title">' . $variables['heading'] . '</h3>' : $variables['heading'];
-    $output = '
-      <div class="panel panel-primary">
+    $output .= '
       <div class="panel-heading">' . $title . '</div>
         <div class="panel-body">
           ' . $variables['content'] . '
         </div>
         <div class="panel-footer">' . $variables['footer'] . '</div>
-      </div>
     ';
   }
+
+  $output .= '</div>';
 
   return $output;
 }
