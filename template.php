@@ -61,9 +61,7 @@ function bootstrap_openmind_theme() {
     ),
 
     'openmind_feature_box' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+      'function' => 'theme_openmind_feature_box',
     ),
 
     'openmind_content_box' => array(
@@ -232,6 +230,22 @@ function theme_openmind_progress_bar($variables) {
           <span class="sr-only">' . $variables['content'] . '</span>
       </div>
   </div>
+  ';
+}
+
+/**
+ * Feature box.
+ */
+function theme_openmind_feature_box($variables) {
+  return '
+    <div class="mind-features-item hover">
+      <div class="item-icon"><i class="fa fa-' . $variables['icon'] . '"></i></div>
+      <div class="item-content">
+        <h3>' . $variables['title'] . '</h3>
+        <p>' . $variables['content'] . '</p>
+        <a href="' . $variables['url'] . '" class="btn btn-success pull-right">' . $variables['text'] . '</a>
+      </div>
+    </div>
   ';
 }
 

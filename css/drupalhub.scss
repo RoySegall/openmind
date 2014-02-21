@@ -49,7 +49,18 @@
   }
 }
 
-
 .nav.nav-tabs {
   margin-bottom: 0px;
+}
+
+.mind-features-item {
+  width: 210px;
+
+  .item-content {
+    width: 210px;
+  }
+
+  p {
+    word-break: break-all;
+  }
 }

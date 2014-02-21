@@ -22,3 +22,10 @@
 
 .nav.nav-tabs {
   margin-bottom: 0px; }
+
+.mind-features-item {
+  width: 210px; }
+  .mind-features-item .item-content {
+    width: 210px; }
+  .mind-features-item p {
+    word-break: break-all; }

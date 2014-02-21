@@ -206,3 +206,20 @@ function example_progress_bar() {
 
   theme('openmind_progress_bar', $variables);
 }
+
+/**
+ * Feature box.
+ */
+function example_feature_box() {
+  // The icon will be the name of the icon from Font awesome without the 'fa-'.
+  // Look at http://fortawesome.github.io/Font-Awesome/icons/
+  $variables = array(
+    'icon' => 'shopping-cart',
+    'title' => 'bar',
+    'content' => 'fooo',
+    'text' => t('Read more'),
+    'url' => url('user/1'),
+  );
+
+  theme('openmind_feature_box', $variables);
+}
