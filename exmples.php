@@ -158,3 +158,17 @@ function example_wells() {
 
   theme('openmind_wells', $variables);
 }
+
+/**
+ * Alerts.
+ */
+function example_alerts() {
+  // Allowed types: success, info, warning, danger.
+  $variables = array(
+    'title' => 'Cheers',
+    'content' => 'Look at me!',
+    'type' => 'success',
+  );
+
+  theme('openmind_alerts', $variables);
+}

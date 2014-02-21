@@ -48,9 +48,7 @@ function bootstrap_openmind_theme() {
       'function' => 'theme_openmind_wells',
     ),
     'openmind_alerts' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+      'function' => 'theme_openmind_alerts',
     ),
     'openmind_progress_bar' => array(
       'variables' => array(),
@@ -97,18 +95,18 @@ function theme_openmind_panels($variables) {
 
   if ($state == 'basic') {
     $output .= '
-        <div class="panel-body">
-          ' . $variables['content'] . '
-        </div>
+      <div class="panel-body">
+        ' . $variables['content'] . '
+      </div>
     ';
   }
   else if ($state == 'with_heading') {
     $title = !empty($variables['title']) ? '<h3 class="panel-title">' . $variables['heading'] . '</h3>' : $variables['heading'];
     $output .= '
       <div class="panel-heading">' . $title . '</div>
-        <div class="panel-body">
-          ' . $variables['content'] . '
-        </div>
+      <div class="panel-body">
+        ' . $variables['content'] . '
+      </div>
     ';
   }
   else if ($state == 'footer') {
@@ -123,10 +121,10 @@ function theme_openmind_panels($variables) {
     $title = !empty($variables['title']) ? '<h3 class="panel-title">' . $variables['heading'] . '</h3>' : $variables['heading'];
     $output .= '
       <div class="panel-heading">' . $title . '</div>
-        <div class="panel-body">
-          ' . $variables['content'] . '
-        </div>
-        <div class="panel-footer">' . $variables['footer'] . '</div>
+      <div class="panel-body">
+        ' . $variables['content'] . '
+      </div>
+      <div class="panel-footer">' . $variables['footer'] . '</div>
     ';
   }
 
@@ -179,9 +177,21 @@ function theme_openmind_wells($variables) {
   if (!empty($variables['size'])) {
     $size = $variables['size'] == 'large' ? 'well-lg' : 'well-sm';
   }
+
   return '
     <div class="well ' . $size . '">
        ' . $variables['content'] . '
+    </div>
+  ';
+}
+
+/**
+ * OpenMedia alerts.
+ */
+function theme_openmind_alerts($variables) {
+  return '
+    <div class="alert alert-' . $variables['type'] . '">
+        <strong>' . $variables['title'] . '</strong> ' . $variables['content'] . '.
     </div>
   ';
 }
