@@ -238,3 +238,18 @@ function example_content_box() {
 
   theme('openmind_content_box', $variables);
 }
+
+/**
+ * Icon box.
+ */
+function example_icon_box() {
+  // Status allowed values: inverse, success, info, warning, danger.
+  $variables = array(
+    'icon' => 'cloud-download',
+    'title' => 'Title',
+    'content' => 'Text',
+    'mode' => 'inverse',
+  );
+
+  theme('openmind_icon_box', $variables);
+}

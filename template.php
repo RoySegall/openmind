@@ -68,6 +68,10 @@ function bootstrap_openmind_theme() {
       'function' => 'theme_openmind_content_box',
     ),
 
+    'openmind_icon_box' => array(
+      'function' => 'theme_openmind_icon_box',
+    ),
+
     'openmind_caption' => array(
       'variables' => array(),
       'template' => '',
@@ -258,6 +262,26 @@ function theme_openmind_content_box($variables) {
       <h4 class="mind-box-title clearfix">' . $variables['title'] . '</h4>
       <i class="fa fa-' . $variables['icon'] . '"></i>
       <p>' . $variables['content'] . '</p>
+    </div>
+  ';
+}
+
+/**
+ * OpenMind content box.
+ */
+function theme_openmind_icon_box($variables) {
+  $mode = '';
+  if (!empty($variables['mode'])) {
+    $mode = 'icon-box-' . $variables['mode'];
+  }
+
+  return '
+    <div class="icon-box ' . $mode . '">
+      <i class="fa fa-' . $variables['icon'] . '"></i>
+      <div class="icon-box-content">
+        <h4>' . $variables['title'] . '</h4>
+        <p>' . $variables['content'] . '</p>
+      </div>
     </div>
   ';
 }
