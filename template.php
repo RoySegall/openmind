@@ -18,9 +18,12 @@ function bootstrap_openmind_theme() {
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
     'openmind_panels' => array(
-      'variables' => array(),
-      'template' => '',
-      'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
+      'variables' => array(
+        'state' => '',
+        'content' => '',
+        'title' => '',
+      ),
+      'function' => 'theme_openmind_panels',
     ),
     'openmind_collapse' => array(
       'variables' => array(),
@@ -73,6 +76,46 @@ function bootstrap_openmind_theme() {
       'path' => drupal_get_path('theme', 'bootstrap_openmind') . '/templates',
     ),
   );
+}
+
+/**
+ * Using the panels component.
+ */
+function theme_openmind_panels($variables) {
+ $state = $variables['state'];
+
+  if ($state == 'basic') {
+    $output = '
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          ' . $variables['content'] . '
+        </div>
+      </div>
+    ';
+  }
+  else if ($state == 'with_heading') {
+    $title = !empty($variables['title']) ? '<h3 class="panel-title">' . $variables['heading'] . '</h3>' : $variables['heading'];
+    $output = '
+      <div class="panel panel-primary">
+      <div class="panel-heading">' . $title . '</div>
+        <div class="panel-body">
+          ' . $variables['content'] . '
+        </div>
+      </div>
+    ';
+  }
+  else if ($state == 'footer') {
+    $output = '
+      <div class="panel panel-primary">
+      <div class="panel-heading">' . $title . '</div>
+        <div class="panel-body">
+          ' . $variables['content'] . '
+        </div>
+      </div>
+    ';
+  }
+
+  return $output;
 }
 
 /**
