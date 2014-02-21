@@ -107,10 +107,22 @@ function theme_openmind_panels($variables) {
   else if ($state == 'footer') {
     $output = '
       <div class="panel panel-primary">
+        <div class="panel-body">
+          ' . $variables['content'] . '
+        </div>
+        <div class="panel-footer">' . $variables['footer'] . '</div>
+      </div>
+    ';
+  }
+  else if ($state == 'footer_and_header') {
+    $title = !empty($variables['title']) ? '<h3 class="panel-title">' . $variables['heading'] . '</h3>' : $variables['heading'];
+    $output = '
+      <div class="panel panel-primary">
       <div class="panel-heading">' . $title . '</div>
         <div class="panel-body">
           ' . $variables['content'] . '
         </div>
+        <div class="panel-footer">' . $variables['footer'] . '</div>
       </div>
     ';
   }

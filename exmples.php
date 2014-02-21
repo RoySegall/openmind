@@ -58,6 +58,29 @@ function example_panels() {
     'title' => TRUE,
   );
 
+  // Footer.
+  $variables = array(
+    'state' => 'footer',
+    'content' => t('Basic panel'),
+    'footer' => t('Footer'),
+  );
+
+  // Heading and footer.
+  $variables = array(
+    'state' => 'footer_and_header',
+    'heading' => t('Heading'),
+    'content' => t('Basic panel'),
+    'footer' => t('Footer'),
+  );
+
+  // Heading as title and footer.
+  $variables = array(
+    'state' => 'footer_and_header',
+    'heading' => t('Heading'),
+    'content' => t('Basic panel'),
+    'footer' => t('Footer'),
+  );
+
   $output = theme('openmind_panels', $variables);
 
   theme('openmind_panels', $variables);
