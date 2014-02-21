@@ -78,7 +78,7 @@
     <?php if ($logo): ?>
       <div id="header-title">
         <h1 class="animated fadeInDown">
-          <a class="logo navbar-btn pull-left" href="<?php print $GLOBALS['base_url']; ?>" title="<?php print t('Home'); ?>">Open <span>Mind</span></a>
+          <a href="<?php print $GLOBALS['base_url']; ?>" title="<?php print t('Home'); ?>">Open <span>Mind</span></a>
         </h1>
         <p class="animated fadeInLeft">Clean and elegant theme</p>
       </div>
